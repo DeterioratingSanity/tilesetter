@@ -39,6 +39,7 @@ int main() {
 	
 	}
 
+	// note attr x1, x2 tends to give obviouslty and unobviously a great num matches, whereas x3 has may x2 but few x3 (as we expect)
 	for (int j = 0; j < numAttr; j++) {
 		
 	
