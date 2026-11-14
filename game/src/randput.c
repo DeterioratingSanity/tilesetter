@@ -33,18 +33,41 @@ int main() {
 		//tilesAt[i] = malloc(numAttr * sizeof(int));
 		
 		//tilesAt[i] = malloc(sizeof(tile));
-		tilesAt[i].attributes = malloc(numAttr * sizeof(int));
+		tilesAt[i].attributes = calloc(numAttr, sizeof(int));
 
 		//printf("woop\n");
 	
-		for (int j = 0; j < numAttr; j++) {
-			//printf("inner woopalogue\n");
-			tilesAt[i].attributes[j] = rand() % bound;
-			//printf("sucessful woopment\n");
-		}
 	}
 
-	printf("Printing.\n");
+	for (int j = 0; j < numAttr; j++) {
+		
+	
+		for (int i = 0; i < numPairs; i++) {
+			//printf("inner woopalogue\n");
+			//tilesAt[i].attributes[j] = rand() % bound;
+			//printf("sucessful woopment\n");
+			
+			int n = -1;
+			int m = -1;
+			do {
+				n = rand() % (numPairs*2);
+			} while (tilesAt[n].attributes[j] != 0);
+
+			do { 
+				m = rand() % (numPairs * 2);
+			} while ((tilesAt[m].attributes[j] != 0) || (m == n));
+
+			//printf("woop %d %d\n", n, m);
+
+			int set = ((rand() % bound) + 1);
+
+			tilesAt[n].attributes[j] = set;
+			tilesAt[m].attributes[j] = set;
+		}
+		//printf("bump\n");
+	}
+
+	//printf("Printing.\n");
 
 	for (int i = 0; i<numPairs * 2; i++) {
 		printf("[");
