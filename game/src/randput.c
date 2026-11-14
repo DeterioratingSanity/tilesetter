@@ -22,7 +22,7 @@ int main() {
 	printf("How many attributes should each tile have?\n");
 	scanf("%d", &numAttr);
 
-	tile** tilesAt = malloc((numPairs*2) * sizeof(tile)); // allocate dynamic space for our user-defined pairs
+	tile* tilesAt = malloc((numPairs*2) * sizeof(tile)); // allocate dynamic space for our user-defined pairs
 
 	/* Will at some juncture need to replace the allocated area with the aforementioned struct. */
 
@@ -32,15 +32,15 @@ int main() {
 		//tilesAt[i] = rand() % bound;
 		//tilesAt[i] = malloc(numAttr * sizeof(int));
 		
-		tilesAt[i] = malloc(sizeof(tile));
-		tilesAt[i]->attributes = malloc(numAttr * sizeof(int));
+		//tilesAt[i] = malloc(sizeof(tile));
+		tilesAt[i].attributes = malloc(numAttr * sizeof(int));
 
-		printf("woop\n");
+		//printf("woop\n");
 	
 		for (int j = 0; j < numAttr; j++) {
-			printf("inner woopalogue\n");
-			tilesAt[i]->attributes[j] = rand() % bound;
-			printf("sucessful woopment\n");
+			//printf("inner woopalogue\n");
+			tilesAt[i].attributes[j] = rand() % bound;
+			//printf("sucessful woopment\n");
 		}
 	}
 
@@ -49,7 +49,7 @@ int main() {
 	for (int i = 0; i<numPairs * 2; i++) {
 		printf("[");
 		for (int j = 0; j < numAttr; j++) {
-			printf("%d, ", tilesAt[i]->attributes[j]);
+			printf("%d, ", tilesAt[i].attributes[j]);
 		}
 		printf("]");
 		if (i % 5 == 4) {
@@ -59,18 +59,18 @@ int main() {
 		}
 	}
 
-	printf("woop out\n");
+	//printf("woop out\n");
 
 	for (int i = 0; i < numPairs * 2; i++) {
 		//printf("%d\n", tilesAt[i]);
 		
-		free(tilesAt[i]->attributes);
-		printf("attriwoop\n");
-		free(tilesAt[i]);
-		printf("tiliwoop\n");
+		free(tilesAt[i].attributes);
+		//printf("attriwoop\n");
+		//free(tilesAt[i]);
+		//printf("tiliwoop\n");
 	}
 
-	printf("deallowoop\n");
-
+	//printf("deallowoop\n");
+	printf("\n");
 	free(tilesAt);	
 }
